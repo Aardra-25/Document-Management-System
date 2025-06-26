@@ -1,9 +1,10 @@
 import React from 'react';
 
+import DeletePage from './DeletePage';
 function App() {
   return (
-    <div style={{ textAlign: 'center', marginTop: '20%' }}>
-      <h1>DOCUMENT MANAGEMENT SYSTEM</h1>
+    <div style={{ justifyContent: 'right',alignItems:'center',marginTop: '0%',marginRight:'40'}} >
+      <DeletePage/>
     </div>
   );
 }
