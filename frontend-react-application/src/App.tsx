@@ -16,8 +16,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} /> {/* Landing Page */}
-        <Route path="/Edit" element={<EditDocumentPage />} />
-        <Route path="/View" element={<ViewDocumentPage />} />
+        <Route path="/edit" element={<EditDocumentPage />} />
+        <Route path="/view" element={<ViewDocumentPage />} />
       </Routes>
     </Router>
   );
