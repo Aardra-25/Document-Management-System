@@ -75,5 +75,4 @@ function ViewDocumentPage() {
     </>
   );
 }
-
 export default ViewDocumentPage;
