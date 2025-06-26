@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EditDocumentPage from "./EditDocumentPage";
-import ViewDocumentPage from "./ViewDocumentPage";
+import ViewDocumentPage from "./ViewDocumentpage";
 import "./App.css"; 
 
 function App() {
