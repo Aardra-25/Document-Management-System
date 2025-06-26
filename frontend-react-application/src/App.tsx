@@ -1,10 +1,25 @@
-import React from 'react';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import EditDocumentPage from "./EditDocumentPage";
+import ViewDocumentPage from "./ViewDocumentPage";
+import "./App.css"; 
 
 function App() {
-  return (
-    <div style={{ textAlign: 'center', marginTop: '20%' }}>
-      <h1>DOCUMENT MANAGEMENT SYSTEM</h1>
+ 
+  const HomePage = () => (
+    <div className="home-wrapper">
+      <h1>Document Management System</h1>
     </div>
+  );
+
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} /> {/* Landing Page */}
+        <Route path="/edit" element={<EditDocumentPage />} />
+        <Route path="/view" element={<ViewDocumentPage />} />
+      </Routes>
+    </Router>
   );
 }
 
