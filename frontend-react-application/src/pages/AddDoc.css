@@ -1,0 +1,86 @@
+body {
+  margin: 0;
+  background-color: #efefef;
+  font-family: 'Satoshi', sans-serif;
+}
+
+/* Navbar styles */
+.navbar {
+  background-color: #f0f0f0;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar nav a {
+  margin-left: 30px;
+  text-decoration: none;
+  color: #111;
+  font-weight: 600;
+}
+
+/* Form section */
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.form-container {
+  background-color: #dedede;
+  padding: 6rem;
+  border-radius: 6px;
+  width: 80%;
+  max-width: 800px;
+}
+
+.form-title {
+  text-align: center;
+  margin-top: -5rem;
+  
+  font-size: 24px;
+}
+
+/* Form groups */
+.form-group {
+  background-color: #f6f6e9;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background-color: #fff;
+}
+
+/* Button */
+.button-container {
+  text-align: center;
+}
+
+.submit-button {
+  background-color: blue;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: darkblue;
+}
