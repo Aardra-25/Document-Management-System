@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./DeletePage.css";
 
-function ViewDocumentPage() {
+function DeletePage() {
   const [documentId, setDocumentId] = useState("");
 
   return (
@@ -41,5 +41,4 @@ function ViewDocumentPage() {
     </>
   );
 }
-
-export default ViewDocumentPage;
+export default DeletePage;
