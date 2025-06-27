@@ -1,0 +1,115 @@
+/* Reset layout to avoid unwanted margins */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.landing-page {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+}
+
+.left {
+  flex: 1;
+  background: #eeeeee;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 40px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 60px;
+}
+
+.intro {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.intro h1 {
+  font-size: 42px;
+  margin-bottom: 16px;
+  line-height: 1.2;
+  color: #222;
+}
+
+.intro hr {
+  margin: 20px 0;
+  border: 1px solid #ccc;
+  width: 60%;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 16px 32px;
+  justify-content: start;
+  margin-top: 24px;
+}
+
+.actions button {
+  padding: 14px 20px;
+  background: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.actions button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.right {
+  flex: 1;
+  position: relative;
+  background: #111;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding-top: 24px;
+}
+
+.right nav {
+  display: flex;
+  gap: 4rem;
+  margin-left: 17rem;
+  margin-bottom: 24px;
+  z-index: 2;
+}
+
+.right nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.image-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.landing-image {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+}
