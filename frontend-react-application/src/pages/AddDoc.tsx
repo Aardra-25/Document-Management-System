@@ -40,5 +40,4 @@ const AddDoc = () => {
     </div>
   );
 };
-
 export default AddDoc;

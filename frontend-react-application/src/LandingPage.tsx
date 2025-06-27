@@ -1,6 +1,6 @@
 import "./LandingPage.css";
 import { Link } from "react-router-dom";
-import lpImage from "./assets/lp.png"; // ✅ Import your 800x1000 image
+import lpImage from "./assets/lp11.png"; // 
 
 const LandingPage = () => {
   return (
@@ -37,5 +37,4 @@ const LandingPage = () => {
     </div>
   );
 };
-
 export default LandingPage;

@@ -41,5 +41,4 @@ function DeletePage() {
     </>
   );
 }
-
 export default DeletePage;
