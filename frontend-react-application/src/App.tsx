@@ -1,12 +1,15 @@
-import React from 'react';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import "./App.css"; 
 
 import DeletePage from './DeletePage';
 function App() {
-  return (
-    <div style={{ justifyContent: 'right',alignItems:'center',marginTop: '0%',marginRight:'40'}} >
-      <DeletePage/>
+
     </div>
   );
-}
+
+  return (
+   
 
 export default App;
