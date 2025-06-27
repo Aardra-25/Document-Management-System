@@ -64,13 +64,14 @@
 }
 
 .input-block input {
-  width: 100%;
-  padding: 12px;
-  border-radius: 20px;
-  border: none;
-  background-color: rgb(255, 255, 255);
-  box-sizing: border-box;
-  font-size: 1rem;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: none;
+    color: black;
+    background-color: rgb(255, 255, 255);
+    box-sizing: border-box;
+    font-size: 1rem;
 }
 
 
@@ -100,7 +101,6 @@
   margin-top: 30px;
   border: 1px solid #ccc;
 }
-
 .output-row {
   margin-bottom: 12px;
 }
