@@ -18,9 +18,7 @@ public interface DocumentRepository extends JpaRepository<Document, Long> {
 
     List<Document> getDocumentsById(Long id);
 
-    @Query("select d from Document d where d.documentName = 'DocumentService'")
-
-
+    @Query("select d from Document d where d.documentName = :documentName")
     List<Document> findByDocumentName(String documentName);
 
 }

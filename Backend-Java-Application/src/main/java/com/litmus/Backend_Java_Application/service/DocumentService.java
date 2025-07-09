@@ -37,10 +37,8 @@ public class DocumentService {
 
 
     public List<Document> findByDocumentName(String documentName) {
-        List<Document> list = new ArrayList<>();
-        System.out.println(documentName);
-        System.out.println(documentRepository.findByDocumentName(documentName));
-        return list;
+
+        return documentRepository.findByDocumentName(documentName);
     }
 
 }
