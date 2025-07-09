@@ -6,17 +6,42 @@ import com.litmus.Backend_Java_Application.repository.DocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DocumentService {
 
     @Autowired
-    DocumentRepository documentRepository;
+    private DocumentRepository documentRepository;
 
-
-    public List<Document> findAllDocuments(){
-
-        return documentRepository.findAll();
+    public Optional<Document> findById(Long id) {
+        return documentRepository.findById(id);
     }
+
+    public List<Document> findAllById(List<Long> ids) {
+        return documentRepository.findAllById(ids);
+
+        }
+
+    public Document saveDocument(Document document) {
+        return documentRepository.save(document);
+    }
+
+    public String deleteById(Long id){
+        documentRepository.deleteById(id);
+        return "Document with ID " + id + " deleted successfully.";
+    }
+
+
+    public List<Document> findByDocumentName(String documentName) {
+
+        return documentRepository.findByDocumentName(documentName);
+    }
+
 }
+
+
+

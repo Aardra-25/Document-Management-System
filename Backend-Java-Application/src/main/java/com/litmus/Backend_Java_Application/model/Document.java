@@ -2,18 +2,26 @@ package com.litmus.Backend_Java_Application.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 @Entity
 public class Document {
     // Getters and setters
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    @Column
+    private String documentName;
+    @Column
+    private String filePath;
 
-    public void setId(Long id) { this.id = id; }
 
-    public void setName(String name) { this.name = name; }
+
+
 }
+
+
