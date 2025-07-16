@@ -1,6 +1,8 @@
 package com.litmus.Backend_Java_Application.service;
 
-
+/*
+import com.litmus.Backend_Java_Application.exception.ResourceNotFoundException;*/
+import com.litmus.Backend_Java_Application.exception.ResourceNotFoundException;
 import com.litmus.Backend_Java_Application.model.Document;
 import com.litmus.Backend_Java_Application.repository.DocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,10 +43,11 @@ public class DocumentService {
         return documentRepository.findByDocumentName(documentName);
     }
 
-
-
-
-
+    public void deleteDocument(Long id) {
+        Document document = documentRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Document not found with ID: " + id));
+        documentRepository.delete(document);
+    }
 }
 
 
