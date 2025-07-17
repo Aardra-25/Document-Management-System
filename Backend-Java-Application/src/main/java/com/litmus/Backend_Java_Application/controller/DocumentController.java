@@ -18,17 +18,15 @@ public class DocumentController {
 
     @Autowired
     private DocumentService documentService;
-/*
-    @GetMapping("/{id}")
+  /*  @GetMapping("/{id}")
     public Document findAllById(@PathVariable Long id) {
         return documentService.findById(id)
                 .orElseThrow(() -> new RuntimeException("Document not found with id: " + id));
-    }
-
+    }*/
     @GetMapping("/get-by-ids")
     public List<Document> findAllById(@RequestParam List<Long> ids) {
         return documentService.findAllById(ids);
-    }*/
+    }
     @GetMapping("/document/{id}")
     public ResponseEntity<Document> getDocumentById(@PathVariable Long id) {
         Document document = documentService.findById(id)
@@ -36,9 +34,20 @@ public class DocumentController {
         return ResponseEntity.ok(document);
     }
 
+    @GetMapping("/projectName/{documentName}")
+    public List<Document> findByDocumentName(@PathVariable("documentName") String documentName) {
+        System.out.println(documentName);
+        return documentService.findByDocumentName(documentName);
+    }
+
+    @GetMapping("/{projectName}")
+    public List<Document> findByProjectName(@PathVariable("projectName") String projectName) {
+        System.out.println(projectName);
+        return documentService.findByProjectName(projectName);
+    }
 
 
-   /* @PostMapping("/new")
+ /*   @PostMapping("/new")
     public Document addDocument(@RequestBody Document document) {
         return documentService.saveDocument(document);
     }*/
@@ -54,24 +63,18 @@ public class DocumentController {
 
 
 
-
-
-
     @DeleteMapping("/document/{id}")
     public ResponseEntity<String> deleteDocument(@PathVariable Long id) {
-       /* Document document = documentService.findById(id)
-                .orElseThrow(() -> new ConfigDataResourceNotFoundException("Cannot delete. Document not found with ID: " + id));
-*/
         documentService.deleteDocument(id);
         return ResponseEntity.ok("Document deleted successfully.");
     }
 
-   /* @DeleteMapping("/{id}")
+    /*@DeleteMapping("/{id}")
     public String deleteDocument(@PathVariable Long id) {
         return documentService.deleteById(id);
-    }
-*/
-    @PutMapping("/document/{id}")
+    }*/
+
+/*    @PutMapping("/document/{id}")
     public ResponseEntity<Document> updateDocument(@PathVariable Long id, @RequestBody Document updatedDocument) {
         Optional<Document> existing = documentService.findById(id);
         if (existing.isPresent()) {
@@ -84,15 +87,19 @@ public class DocumentController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }*/
+
+    @PutMapping("/documents/update/{id}")
+    public ResponseEntity<Document> updateDocument(@PathVariable Long id, @RequestBody Document updatedDoc) {
+        Document existingDoc = documentService.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Document not found"));
+
+        existingDoc.setDocumentName(updatedDoc.getDocumentName());
+        existingDoc.setFilePath(updatedDoc.getFilePath());
+
+        return ResponseEntity.ok(documentService.saveDocument(existingDoc));
     }
 
-
-
-    @GetMapping("/projectName/{documentName}")
-    public List<Document> findByDocumentName(@PathVariable("documentName") String documentName) {
-        System.out.println(documentName);
-        return documentService.findByDocumentName(documentName);
-    }
 }
 
 

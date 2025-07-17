@@ -43,10 +43,25 @@ public class DocumentService {
         return documentRepository.findByDocumentName(documentName);
     }
 
+    public List<Document> findByProjectName(String projectName) {
+
+        return documentRepository.findByProjectName(projectName);
+    }
+
     public void deleteDocument(Long id) {
         Document document = documentRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Document not found with ID: " + id));
         documentRepository.delete(document);
+    }
+    public Document updateDocument(Long id, Document updatedData) {
+        Document existingDoc = documentRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Document not found"));
+
+        existingDoc.setDocumentName(updatedData.getDocumentName());
+        existingDoc.setFilePath(updatedData.getFilePath());
+
+
+        return documentRepository.save(existingDoc);
     }
 }
 
