@@ -3,9 +3,13 @@ from typing import Dict, Any, List, Optional
 
 class InquiryRequest(BaseModel):
     userquery: str
+    project_name: str
+    document_name: str
+    created_by: Optional[str] = None
 
 class LinkResponse(BaseModel):
-    link: str
+    links: List[str]
+    metadata: Optional[List[Dict[str, Any]]] = None
 
     class Config:
         orm_mode = True
@@ -15,7 +19,7 @@ class DocumentResponse(BaseModel):
     content: Optional[str] = None
     document_id: Optional[str] = None
     message: Optional[str] = None
-    metadata: Optional[Dict[str, Any]] = None
+    metadata: Optional[List[Dict[str, Any]]] = None
     error: Optional[str] = None
 
     class Config:
@@ -27,4 +31,10 @@ class SearchResponse(BaseModel):
     total_results: int
 
     class Config:
-        orm_mode = True 
+        orm_mode = True
+
+class DocumentMetadata(BaseModel):
+    project_name: str
+    document_name: str
+    link: str
+    created_by: Optional[str] = None 

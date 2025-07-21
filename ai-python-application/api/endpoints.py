@@ -7,24 +7,42 @@ document_service_client = DocumentServiceClient()
 
 @router.post("/inquiry", response_model=LinkResponse)
 def inquiry(request: InquiryRequest):
-    return {"link": "Chatbot will start soon"}
+    return {"links": ["Chatbot will start soon"], "metadata": None}
 
-@router.post("/link/{project_name}", response_model=LinkResponse)
-async def document1(request: InquiryRequest, project_name: str):
-    java_response, html_content = await document_service_client.fetch_document(project_name)
-    return {"link": html_content}
+@router.post("/link/", response_model=LinkResponse)
+async def get_links(request: InquiryRequest):
+    java_response, html_content = await document_service_client.fetch_document(
+        request.project_name, request.document_name, request.created_by
+    )
+    links = [item["link"] for item in html_content]
+    metadata = [
+        {
+            "project_name": item.get("project_name"),
+            "document_name": item.get("document_name"),
+            "link": item.get("link"),
+            "created_by": item.get("created_by")
+        }
+        for item in html_content
+    ]
+    return {"links": links, "metadata": metadata}
 
-@router.post("/document/{project_name}", response_model=LinkResponse)
-async def document(request: InquiryRequest, project_name: str):
-    java_response, html_content = await document_service_client.fetch_document(project_name)
-    return {"link": f"{java_response}: It will be saved"}
-
+@router.post("/document/", response_model=DocumentResponse)
+async def get_document(request: InquiryRequest):
+    java_response, html_content = await document_service_client.fetch_document(
+        request.project_name, request.document_name, request.created_by
+    )
+    return {
+        "java_response": java_response,
+        "content": None,
+        "document_id": None,
+        "message": "Documents fetched and stored.",
+        "metadata": html_content,
+        "error": None
+    }
 
 @router.get("/chroma/search", response_model=SearchResponse)
 async def search_documents(query: str, n_results: int = 5):
-    """
-    Search documents in ChromaDB
-    """
+    
     results = document_service_client.search_documents(query, n_results)
     return {
         "query": query,
