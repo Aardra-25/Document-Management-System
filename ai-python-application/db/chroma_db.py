@@ -19,9 +19,8 @@ def get_embedding(text: str):
 def split_by_paragraphs(content):
     return [para.strip() for para in content.split("\n\n") if para.strip()]
 
-def add_document_para(project_name, link, content):
+def add_document_para(project_name, link, content, document_name=None, created_by=None):
     chunks = split_by_paragraphs(content)
-    
     total = len(chunks)
     ids = [
         f"{project_name}_{link.split('/')[-1]}_{i+1}_of_{total}"
@@ -29,7 +28,14 @@ def add_document_para(project_name, link, content):
     ]
     embeddings = [get_embedding(chunk) for chunk in chunks]
     metadatas = [
-        {"project_name": project_name, "link": link, "section_number": i+1, "total_sections": total}
+        {
+            "project_name": project_name,
+            "document_name": document_name,
+            "link": link,
+            "created_by": created_by,
+            "section_number": i+1,
+            "total_sections": total
+        }
         for i in range(total)
     ]
     collection.add(
