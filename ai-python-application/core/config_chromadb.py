@@ -7,7 +7,9 @@ class ChromaDBSettings(BaseSettings):
     model_config = SettingsConfigDict(
         env_prefix="CHROMADB_",
         env_file=".env",
-        env_file_encoding="utf-8"
+        env_file_encoding="utf-8",
+        extra="allow",
+         
     )
     
 config = ChromaDBSettings()

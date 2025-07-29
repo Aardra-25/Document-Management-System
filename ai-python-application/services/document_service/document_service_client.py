@@ -23,7 +23,9 @@ class DocumentServiceClient:
             print(f"Warning: Failed to store document in ChromaDB: {e}")
 
     async def fetch_document(self, project_name: str, document_name: str, created_by: str = None) -> (str, list):
+        print(f"fetch_document called with project_name={project_name}, document_name={document_name}, created_by={created_by}")
         java_backend_url = f"http://localhost:8080/documents/projectName/{document_name}"
+        print(f"Requesting Java backend URL: {java_backend_url}")
         async with httpx.AsyncClient() as client:
             response = await client.get(java_backend_url)
             if response.status_code != 200:
