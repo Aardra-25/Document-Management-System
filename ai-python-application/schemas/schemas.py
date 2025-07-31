@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from typing import Dict, Any, List, Optional
 
 class InquiryRequest(BaseModel):
-    userquery: str
+    
     project_name: str
     document_name: str
     created_by: Optional[str] = None
